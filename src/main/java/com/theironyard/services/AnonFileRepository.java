@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface AnonFileRepository extends CrudRepository<AnonFile, Integer>{
     List<AnonFile> findByIsPermanentFalse();
+    List<AnonFile> findByIsPermanentTrue();
     AnonFile findFirstByIsPermanentFalseOrderByCreatedAsc();
 
 }

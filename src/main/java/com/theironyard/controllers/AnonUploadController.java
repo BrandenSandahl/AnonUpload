@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -72,6 +73,16 @@ public class AnonUploadController {
     @RequestMapping(path = "/files", method = RequestMethod.GET)
     public List<AnonFile> getFiles() {
         return (List<AnonFile>) anonFileRepository.findAll();
+    }
+
+    @RequestMapping(path = "/counts", method = RequestMethod.GET)
+    public HashMap getCounts() {
+        HashMap counts = new HashMap();
+        if (anonFileRepository.count() >= 1){
+            counts.put("perm", anonFileRepository.findByIsPermanentTrue().size());
+            counts.put("all", anonFileRepository.count());
+        }
+        return counts;
     }
 
 
