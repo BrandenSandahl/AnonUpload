@@ -65,8 +65,6 @@ public class AnonUploadController {
             anonFileRepository.delete(anonFileRepository.findFirstByIsPermanentFalseOrderByCreatedAsc());
             anonFileRepository.save(anonFile);
         }
-
-
         response.sendRedirect("/");
     }
 
